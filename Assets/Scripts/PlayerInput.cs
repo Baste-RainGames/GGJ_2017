@@ -2,20 +2,34 @@
 
 public class PlayerInput : MonoBehaviour {
 
+    public PlayerID playerId;
     public KeyBinding keyBinding;
     private KeyCode upKey, downKey, leftKey, rightKey;
     private KeyCode shootKey;
 
     private KeyCode stealGunKey;
-    private KeyCode stealEyes; 
+    private KeyCode stealEyesKey; 
     
     [SerializeField]
     private bool hasGun;
     public bool HasGun {
         get { return hasGun; }
-        set {
+        private set {
             hasGun = value;
             gunRenderer.enabled = value;
+        }
+    }
+
+    [SerializeField]
+    private bool hasEyes;
+    public bool HasEyes {
+        get {
+            return hasEyes;
+        }
+        set {
+            hasEyes = value;
+            if(value)
+                EyesController.SetPlayerThatHasEyes(playerId);
         }
     }
 
@@ -30,21 +44,27 @@ public class PlayerInput : MonoBehaviour {
         movementAgent = GetComponent<PlayerMovement>();
         gun           = GetComponent<Gun>();
 
-        upKey       = keyBinding.moveUp;
-        downKey     = keyBinding.moveDown;
-        leftKey     = keyBinding.moveLeft;
-        rightKey    = keyBinding.moveRight;
-        shootKey    = keyBinding.shoot;
-        stealGunKey = keyBinding.stealGun;
+        upKey        = keyBinding.moveUp;
+        downKey      = keyBinding.moveDown;
+        leftKey      = keyBinding.moveLeft;
+        rightKey     = keyBinding.moveRight;
+        shootKey     = keyBinding.shoot;
+        stealGunKey  = keyBinding.stealGun;
+        stealEyesKey = keyBinding.stealEyes;
 
         //eh
         HasGun = hasGun;
+        HasEyes = hasEyes;
 
         if (otherPlayer == null) {
             var allPlayers = FindObjectsOfType<PlayerInput>();
             if (allPlayers.Length > 1) {
                 otherPlayer = allPlayers[0] == this ? allPlayers[1] : allPlayers[0];
             }
+        }
+
+        if (otherPlayer != null && otherPlayer.playerId == playerId) {
+            Debug.LogError("SAME PLAYER ID ON PLAYERS OMG");
         }
 
         if (gunRenderer == null) {
@@ -61,11 +81,16 @@ public class PlayerInput : MonoBehaviour {
             ShootInput();
         }
         else if (Input.GetKeyDown(stealGunKey)) {
-            if (!otherPlayer.hasGun) {
+            if (!otherPlayer.HasGun) {
                 Debug.Log("ERROR ERROR NOBODY HAS GUN");
             }
             otherPlayer.HasGun = false;
             HasGun = true;
+        }
+
+        if (!hasEyes && Input.GetKeyDown(stealEyesKey)) {
+            otherPlayer.HasEyes = false;
+            HasEyes = true;
         }
     }
 

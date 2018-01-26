@@ -16,4 +16,5 @@ MonoBehaviour:
   moveDown: 274
   moveRight: 275
   shoot: 256
-  stealGun: 303
+  stealGun: 277
+  stealEyes: 278

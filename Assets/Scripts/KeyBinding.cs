@@ -8,4 +8,5 @@ public class KeyBinding : ScriptableObject {
     public KeyCode moveRight = KeyCode.D;
     public KeyCode shoot     = KeyCode.Space;
     public KeyCode stealGun  = KeyCode.Alpha1;
+    public KeyCode stealEyes = KeyCode.Alpha2;
 }
