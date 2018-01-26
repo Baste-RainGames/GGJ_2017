@@ -1,6 +1,7 @@
 Temp*
 Library*
 .idea*
+.vs*
 UnityPackageManager*
 *.csproj
 *.sln*
