@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour {
     private Vector2 input;
     public Vector2 FacingDirection { get; private set; } = Vector2.down;
 
-    private Vector2 Position => transform.position;
+    public Vector2 Position => transform.position;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
