@@ -3,7 +3,6 @@
 public class Gun : MonoBehaviour {
 
     public GameObject bulletPrefab;
-    public KeyCode shootKey;
     public float shootCooldown = .5f;
 
     private PlayerMovement movement;
@@ -16,12 +15,6 @@ public class Gun : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(shootKey))
-            IsShooting = true;
-
-        if (Input.GetKeyUp(shootKey))
-            IsShooting = false;
-
         if (IsShooting && Time.time - timeOfLastShot > shootCooldown) {
             Fire();
         }
@@ -36,5 +29,13 @@ public class Gun : MonoBehaviour {
 
     private Vector2 FindShootDirection() {
         return movement.FacingDirection;
+    }
+
+    public void StartShooting() {
+        IsShooting = true;
+    }
+
+    public void StopShooting() {
+        IsShooting = false;
     }
 }

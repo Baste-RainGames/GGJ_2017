@@ -2,13 +2,12 @@
 
 public class PlayerMovement : MonoBehaviour {
     public float speed = 5f;
-    public KeyCode up, down, left, right;
     public Transform directionIndicator;
 
     private Rigidbody2D rb;
     private Gun gun;
 
-    private Vector2 input;
+    private Vector2 moveDir;
     public Vector2 FacingDirection { get; private set; } = Vector2.down;
 
     public Vector2 Position => transform.position;
@@ -18,35 +17,22 @@ public class PlayerMovement : MonoBehaviour {
         gun = GetComponent<Gun>();
     }
 
-    private void Update() {
-        input = Vector2.zero;
-        if (Input.GetKey(up)) {
-            input += Vector2.up;
+    public void MoveInDir(Vector2 direction) {
+        moveDir = direction;
+        if (!gun.IsShooting) {
+            TurnToFaceDirection(moveDir);
         }
-
-        if (Input.GetKey(left)) {
-            input += Vector2.left;
-        }
-
-        if (Input.GetKey(down)) {
-            input += Vector2.down;
-        }
-
-        if (Input.GetKey(right)) {
-            input += Vector2.right;
-        }
-        input = input.normalized;
     }
 
     private void FixedUpdate() {
-        TurnToFaceDirection();
+        rb.velocity = moveDir * speed;
 
-        rb.velocity = input * speed;
+        moveDir = Vector2.MoveTowards(moveDir, Vector2.zero, Time.deltaTime * 3f);
     }
 
-    private void TurnToFaceDirection() {
-        if (input != Vector2.zero && !gun.IsShooting) {
-            FacingDirection = input;
+    private void TurnToFaceDirection(Vector2 dir) {
+        if (!gun.IsShooting) {
+            FacingDirection = dir;
             directionIndicator.transform.position = Position + FacingDirection * .7f;
 
             var angle = Vector2.Angle(Vector2.down, FacingDirection);
