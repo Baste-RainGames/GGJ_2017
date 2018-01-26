@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2911030e5534a95a4d09ea58ba00c68, type: 3}
+  m_Name: KeyBinding_WASD
+  m_EditorClassIdentifier: 
+  moveUp: 119
+  moveLeft: 97
+  moveDown: 115
+  moveRight: 100
+  shoot: 32
+  stealGun: 49

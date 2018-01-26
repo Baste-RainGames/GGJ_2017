@@ -256,11 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  up: 273
-  down: 274
-  left: 276
-  right: 275
-  directionIndicator: {fileID: 4603620720205970}
+  gunIndicator: {fileID: 4603620720205970}
 --- !u!114 &114828981156298760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -272,11 +268,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477393bd4f3a8de48b5eab31998218a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upKey: 273
-  downKey: 274
-  leftKey: 276
-  rightKey: 275
-  shootKey: 256
+  keyBinding: {fileID: 0}
+  hasGun: 0
+  otherPlayer: {fileID: 0}
+  gunRenderer: {fileID: 212025625514824032}
 --- !u!114 &114974791671291248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,7 +285,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1269673450209430, guid: 80b167278955b6b4b93ec437beff2e56,
     type: 2}
-  shootKey: 256
   shootCooldown: 0.12
 --- !u!124 &124005980816013570
 Behaviour:

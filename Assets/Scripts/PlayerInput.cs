@@ -2,8 +2,24 @@
 
 public class PlayerInput : MonoBehaviour {
 
-    public KeyCode upKey, downKey, leftKey, rightKey;
-    public KeyCode shootKey;
+    public KeyBinding keyBinding;
+    private KeyCode upKey, downKey, leftKey, rightKey;
+    private KeyCode shootKey;
+
+    private KeyCode stealGunKey;
+    
+    [SerializeField]
+    private bool hasGun;
+    public bool HasGun {
+        get { return hasGun; }
+        set {
+            hasGun = value;
+            gunRenderer.enabled = value;
+        }
+    }
+
+    public PlayerInput otherPlayer;
+    public SpriteRenderer gunRenderer;
 
     private Vector2 movementInput;
     private PlayerMovement movementAgent;
@@ -12,11 +28,31 @@ public class PlayerInput : MonoBehaviour {
     void Awake() {
         movementAgent = GetComponent<PlayerMovement>();
         gun           = GetComponent<Gun>();
+
+        upKey       = keyBinding.moveUp;
+        downKey     = keyBinding.moveDown;
+        leftKey     = keyBinding.moveLeft;
+        rightKey    = keyBinding.moveRight;
+        shootKey    = keyBinding.shoot;
+        stealGunKey = keyBinding.stealGun;
+
+        //eh
+        HasGun = hasGun;
     }
 
     void Update() {
         MovementInput();
-        ShootInput();
+
+        if (hasGun) {
+            ShootInput();
+        }
+        else if (Input.GetKeyDown(stealGunKey)) {
+            if (!otherPlayer.hasGun) {
+                Debug.Log("ERROR ERROR NOBODY HAS GUN");
+            }
+            otherPlayer.HasGun = false;
+            HasGun = true;
+        }
     }
 
     private void ShootInput() {

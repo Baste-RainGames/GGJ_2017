@@ -2,7 +2,7 @@
 
 public class PlayerMovement : MonoBehaviour {
     public float speed = 5f;
-    public Transform directionIndicator;
+    public Transform gunIndicator;
 
     private Rigidbody2D rb;
     private Gun gun;
@@ -33,14 +33,14 @@ public class PlayerMovement : MonoBehaviour {
     private void TurnToFaceDirection(Vector2 dir) {
         if (!gun.IsShooting) {
             FacingDirection = dir;
-            directionIndicator.transform.position = Position + FacingDirection * .7f;
+            gunIndicator.transform.position = Position + FacingDirection * .7f;
 
             var angle = Vector2.Angle(Vector2.down, FacingDirection);
             if (FacingDirection.x < 0) {
                 angle *= -1;
             }
             
-            directionIndicator.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+            gunIndicator.transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
     }
 }
