@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour {
     private KeyCode shootKey;
 
     private KeyCode stealGunKey;
+    private KeyCode stealEyes; 
     
     [SerializeField]
     private bool hasGun;
