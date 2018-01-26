@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
@@ -7,6 +8,11 @@ public class Bullet : MonoBehaviour {
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    IEnumerator Start() {
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
     }
 
     public void Fire(Vector2 direction) {
