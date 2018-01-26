@@ -44,4 +44,13 @@ public class Enemy : MonoBehaviour {
 
         return dist1 < dist2 ? player1 : player2;
     }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        var player = other.GetComponent<PlayerMovement>();
+        if (player != null) {
+            GameOver.DoGameOver();
+            enabled = false;
+            rb.velocity = Vector2.zero;
+        }
+    }
 }

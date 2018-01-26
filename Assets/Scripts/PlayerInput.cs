@@ -93,4 +93,8 @@ public class PlayerInput : MonoBehaviour {
         movementInput = movementInput.normalized;
         movementAgent.MoveInDir(movementInput);
     }
+
+    private void OnDisable() {
+        gun.StopShooting();
+    }
 }
