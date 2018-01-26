@@ -38,6 +38,19 @@ public class PlayerInput : MonoBehaviour {
 
         //eh
         HasGun = hasGun;
+
+        if (otherPlayer == null) {
+            var allPlayers = FindObjectsOfType<PlayerInput>();
+            if (allPlayers.Length > 1) {
+                otherPlayer = allPlayers[0] == this ? allPlayers[1] : allPlayers[0];
+            }
+        }
+
+        if (gunRenderer == null) {
+            var directionIndicator = transform.Find("DirectionIndicator");
+            if(directionIndicator != null)
+                gunRenderer = directionIndicator.GetComponent<SpriteRenderer>();
+        }
     }
 
     void Update() {
