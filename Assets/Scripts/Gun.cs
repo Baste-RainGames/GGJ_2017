@@ -34,7 +34,6 @@ public class Gun : MonoBehaviour {
     private Vector2 FindBulletSpawnPosition(Vector2 direction, out bool shotBlocked) {
         var raycastHit = Physics2D.Raycast(transform.position, direction, 2f, 1 << LayerMask.NameToLayer("Default"));
         if (raycastHit) {
-            Debug.Log(raycastHit.distance);
             if (raycastHit.distance < .5f) {
                 Debug.Log("hit " + raycastHit.collider.name);
                 shotBlocked = true;

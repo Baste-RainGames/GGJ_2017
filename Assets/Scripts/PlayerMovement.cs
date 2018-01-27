@@ -43,4 +43,9 @@ public class PlayerMovement : MonoBehaviour {
             gunIndicator.transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
     }
+
+    public void StopVelocity() {
+        rb.velocity = Vector2.zero;
+        moveDir = Vector2.zero;
+    }
 }

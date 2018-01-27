@@ -882,16 +882,6 @@ Prefab:
       propertyPath: otherPlayer
       value: 
       objectReference: {fileID: 1673311318}
-    - target: {fileID: 114828981156298760, guid: 08fe1d8a82cc11947b61dd6f10f66974,
-        type: 2}
-      propertyPath: hasEyes
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114828981156298760, guid: 08fe1d8a82cc11947b61dd6f10f66974,
-        type: 2}
-      propertyPath: hasBlink
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 08fe1d8a82cc11947b61dd6f10f66974, type: 2}
   m_IsPrefabParent: 0
@@ -1711,7 +1701,7 @@ Prefab:
     - target: {fileID: 114828981156298760, guid: 08fe1d8a82cc11947b61dd6f10f66974,
         type: 2}
       propertyPath: hasEyes
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114828981156298760, guid: 08fe1d8a82cc11947b61dd6f10f66974,
         type: 2}

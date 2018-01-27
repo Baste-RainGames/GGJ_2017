@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 114828981156298760}
   - component: {fileID: 114226949429988488}
   - component: {fileID: 114974791671291248}
+  - component: {fileID: 114362424431301600}
   - component: {fileID: 50691144899607056}
   - component: {fileID: 58423740320391232}
   m_Layer: 8
@@ -257,6 +258,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   gunIndicator: {fileID: 4603620720205970}
+--- !u!114 &114362424431301600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860017689231668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78fb5786fb2c4532beec2592891a0f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkLength: 5
 --- !u!114 &114828981156298760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -268,10 +281,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477393bd4f3a8de48b5eab31998218a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerId: 0
   keyBinding: {fileID: 0}
-  hasGun: 0
   otherPlayer: {fileID: 0}
   gunRenderer: {fileID: 212025625514824032}
+  hasGun: 0
+  hasEyes: 0
+  hasBlink: 0
 --- !u!114 &114974791671291248
 MonoBehaviour:
   m_ObjectHideFlags: 1
