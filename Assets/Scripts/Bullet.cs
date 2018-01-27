@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour {
 
     
     private void OnCollisionEnter2D(Collision2D other) {
-        var damageable = other.GetComponent<Destructible>();
+        var damageable = other.GetComponent<IDamageable>();
         if (damageable == null)  {
             if (other.gameObject.layer == LayerMask.NameToLayer("Geometry")) {
                 audioSource.clip = HitWall;
@@ -37,10 +37,7 @@ public class Bullet : MonoBehaviour {
         }
         else {
             OnDamagedObject();
-            damageable.Health -= Damage;
-
-            if (damageable.Health <= 0)
-                damageable.Destroy();
+            damageable.Damaged(Damage);
         }
 
         Destroy(GetComponent<Collider>());

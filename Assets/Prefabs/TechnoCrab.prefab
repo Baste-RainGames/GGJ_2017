@@ -158,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1261592272467662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.04749, y: -9.2436905, z: 6.4983115}
+  m_LocalPosition: {x: 7.392791, y: 1.0728525, z: -9.182209}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4682101589571170}
@@ -226,7 +226,8 @@ AudioSource:
   m_GameObject: {fileID: 1199448806888524}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: c0cf96afc87e747419478e0c206749c2,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 331b5809e857b3f43928bca1d22a8e8b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -306,7 +307,8 @@ AudioSource:
   m_GameObject: {fileID: 1989611149849134}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: c0cf96afc87e747419478e0c206749c2,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 793c06968a2a39240a62c3517e03ddc5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -419,7 +421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5488b4821ecb4801945ba922d376dc16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionRadius: 3
   explosionTemplate: {fileID: 1048455840816270}
 --- !u!114 &114781052782146974
 MonoBehaviour:

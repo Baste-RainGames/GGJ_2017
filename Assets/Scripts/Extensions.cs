@@ -5,11 +5,11 @@ public static class Extensions {
         return go.GetComponent<T>() != null;
     }
 
-    public static T GetComponent<T>(this Collision2D col) where T : Component {
+    public static T GetComponent<T>(this Collision2D col) {
         return col.gameObject.GetComponent<T>();
     }
 
-    public static bool HasComponent<T>(this Collision2D col) where T : Component {
+    public static bool HasComponent<T>(this Collision2D col) {
         return col.gameObject.HasComponent<T>();
     }
 

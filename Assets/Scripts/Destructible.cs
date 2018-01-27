@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Destructible : MonoBehaviour {
+public class Destructible : MonoBehaviour, IDamageable {
 
     public int Health = 3;
     public AudioSource deathSound;
@@ -14,4 +14,10 @@ public class Destructible : MonoBehaviour {
         Destroy(gameObject);
     }
 
+    public void Damaged(int damage) {
+        Health -= damage;
+
+        if (Health <= 0)
+            Destroy();
+    }
 }

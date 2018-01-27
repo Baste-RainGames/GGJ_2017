@@ -2,9 +2,13 @@
 
 public class Blinker : MonoBehaviour {
 
+    public float blinkLength;
+    public AudioSource audioSource;
+    public float blinkCooldown;
+
     private PlayerMovement movement;
     private float blinkOffset;
-    public float blinkLength;
+    private float canBlinkTime;
 
     public Vector2 Position {
         get { return transform.position; }
@@ -17,8 +21,12 @@ public class Blinker : MonoBehaviour {
     }
 
     public void TryToBlink() {
+        if(Time.time < canBlinkTime)
+            return;
+
         var forward = movement.FacingDirection;
         var destination = Position + blinkLength * forward;
+        audioSource.Play();
 
         var toDest = (destination - Position);
         var hit = Physics2D.Raycast(Position, toDest, blinkLength, Layers.GeometryMaskWithoutBlink);
@@ -29,6 +37,7 @@ public class Blinker : MonoBehaviour {
         }
 
         Position = destination;
+        canBlinkTime = Time.time + blinkCooldown;
         movement.StopVelocity();
     }
 }
