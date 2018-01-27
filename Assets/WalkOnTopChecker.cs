@@ -12,7 +12,7 @@ public class WalkOnTopChecker : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        playerMovement.UpdateZPos(other.transform.position.z);
+        playerMovement.UpdateZPos(-0.1875f);
         touching.Add(other);
     }
 
