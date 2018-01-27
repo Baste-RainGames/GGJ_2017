@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4621329379474076}
   - component: {fileID: 114286638636085292}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: EnemySpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,7 +118,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1245692890356254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 1.56, z: 0}
+  m_LocalPosition: {x: -9.683351, y: -0.3640871, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4062170620548728}
@@ -140,6 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thingToSpawn: {fileID: 1746007952954052, guid: a06c3f9064283e94983757c0f3d05f80,
     type: 2}
+  spawnZPos: -0.25
   numToSpawn: 3
   timeBetweenSpawns: 2
   timeBeforeFirstSpawn: 0.5
