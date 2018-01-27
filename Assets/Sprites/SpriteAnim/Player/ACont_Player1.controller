@@ -123,38 +123,13 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &1102592619927932476
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Idle_p2
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e65ded0fc62dcf1468a06d06060a4414, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &1102706193736773486
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Teleport
+  m_Name: TeleportRight
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -254,7 +229,7 @@ AnimatorStateMachine:
     m_Position: {x: 108, y: 348, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102840128798144028}
-    m_Position: {x: 108, y: 204, z: 0}
+    m_Position: {x: -108, y: 252, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102046785123102408}
     m_Position: {x: 108, y: 300, z: 0}
@@ -266,10 +241,7 @@ AnimatorStateMachine:
     m_Position: {x: 108, y: 252, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102706193736773486}
-    m_Position: {x: 312, y: 144, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 1102592619927932476}
-    m_Position: {x: 108, y: 468, z: 0}
+    m_Position: {x: 324, y: 396, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
