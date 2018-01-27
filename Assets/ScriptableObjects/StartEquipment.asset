@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 880c4c1d7faf4279a0b80f840b710f53, type: 3}
   m_Name: StartEquipment
   m_EditorClassIdentifier: 
-  startsWithGun: 0
+  startsWithGun: 1
   startsWithEyes: 0
   startsWithBlink: 0

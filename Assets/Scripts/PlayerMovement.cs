@@ -1,5 +1,4 @@
-﻿using System.Security;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     public float speed = 5f;
@@ -8,31 +7,46 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D rb;
     private Gun gun;
 
-    private Vector2 moveDir;
+    private Vector2 movementVector;
+    public AnimationPlayer animationPlayer;
     public Vector2 FacingDirection { get; private set; } = Vector2.down;
     public Vector2 Position => transform.position;
-
-    private float gunIndicatorZPos;
-    private float startingZPos;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         gun = GetComponent<Gun>();
-        gunIndicatorZPos = gunIndicator.localPosition.z;
-        startingZPos = transform.position.z;
+        animationPlayer = new AnimationPlayer(GetComponentInChildren<Animator>());
+        animationPlayer.EnsurePlaying("Idle");
     }
 
     public void MoveInDir(Vector2 direction) {
-        moveDir = direction;
+        movementVector = direction;
         if (!gun.IsShooting) {
-            TurnToFaceDirection(moveDir);
+            TurnToFaceDirection(movementVector);
         }
     }
 
     private void FixedUpdate() {
-        rb.velocity = moveDir * speed;
+        rb.velocity = movementVector * speed;
 
-        moveDir = Vector2.MoveTowards(moveDir, Vector2.zero, Time.deltaTime * 3f);
+        movementVector = Vector2.MoveTowards(movementVector, Vector2.zero, Time.deltaTime * 3f);
+        if (movementVector == Vector2.zero) {
+            animationPlayer.EnsurePlaying("Idle");
+        }
+        else {
+            if (movementVector.y < 0) {
+                animationPlayer.EnsurePlaying("WalkDown");
+            }
+            else if (movementVector.y > 0) {
+                animationPlayer.EnsurePlaying("WalkUp");
+            }
+            else if (movementVector.x > 0) {
+                animationPlayer.EnsurePlaying("WalkRight");
+            }
+            else {
+                animationPlayer.EnsurePlaying("WalkLeft");
+            }
+        }
     }
 
 
@@ -53,6 +67,6 @@ public class PlayerMovement : MonoBehaviour {
 
     public void StopVelocity() {
         rb.velocity = Vector2.zero;
-        moveDir = Vector2.zero;
+        movementVector = Vector2.zero;
     }
 }

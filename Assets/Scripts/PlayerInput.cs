@@ -28,6 +28,7 @@ public class PlayerInput : MonoBehaviour {
         set {
             hasGun = value;
             gunRenderer.enabled = value;
+            GetComponentInChildren<Animator>().SetLayerWeight(1, value ? 1 : 0);
         }
     }
 

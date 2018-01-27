@@ -34,8 +34,9 @@ public class Spawner : MonoBehaviour {
             }
 
             if (spawnedThings.Count < numToSpawn) {
-                var spawnPos = spawnPositions[Random.Range(0, spawnPositions.Length)];
-                spawnedThings.Add(Instantiate(thingToSpawn, spawnPos.position.WithZ(spawnZPos), Quaternion.identity)); 
+                var spawnPos = spawnPositions[Random.Range(0, spawnPositions.Length)].position;
+                spawnPos += new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f), 0f);
+                spawnedThings.Add(Instantiate(thingToSpawn, spawnPos.WithZ(spawnZPos), Quaternion.identity)); 
             }
 
             yield return new WaitForSeconds(timeBetweenSpawns); 
