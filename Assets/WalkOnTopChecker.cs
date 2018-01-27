@@ -3,23 +3,18 @@ using UnityEngine;
 
 public class WalkOnTopChecker : MonoBehaviour {
 
-    private PlayerMovement playerMovement;
-
+    public Transform thingToMoveZPosOf;
     private HashSet<Collider2D> touching = new HashSet<Collider2D>();
 
-    private void Awake() {
-        playerMovement = GetComponentInParent<PlayerMovement>();
-    }
-
     private void OnTriggerEnter2D(Collider2D other) {
-        playerMovement.UpdateZPos(-0.1875f);
+        thingToMoveZPosOf.position = thingToMoveZPosOf.position.WithZ(-0.1875f);
         touching.Add(other);
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         touching.Remove(other);
         if (touching.Count == 0) {
-            playerMovement.ReturnToDefaultZPos();
+            thingToMoveZPosOf.position = thingToMoveZPosOf.position.WithZ(0f);
         }
     }
 

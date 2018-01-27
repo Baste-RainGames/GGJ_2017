@@ -5,6 +5,8 @@ using UnityEngine;
 public class Spawner : MonoBehaviour {
 
     public GameObject thingToSpawn;
+    [Range(-.5f, .5f)]
+    public float spawnZPos;
     public int numToSpawn;
     [Range(0, 10)]
     public float timeBetweenSpawns;
@@ -33,7 +35,7 @@ public class Spawner : MonoBehaviour {
 
             if (spawnedThings.Count < numToSpawn) {
                 var spawnPos = spawnPositions[Random.Range(0, spawnPositions.Length)];
-                spawnedThings.Add(Instantiate(thingToSpawn, spawnPos.position, Quaternion.identity));
+                spawnedThings.Add(Instantiate(thingToSpawn, spawnPos.position.WithZ(spawnZPos), Quaternion.identity)); 
             }
 
             yield return new WaitForSeconds(timeBetweenSpawns); 

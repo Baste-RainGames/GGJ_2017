@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
@@ -31,7 +30,11 @@ public class Enemy : MonoBehaviour {
 
     void Update() {
         var closest = FindClosestPlayer();
-        moveDir = (closest.Position - Position).normalized;
+        var toClosest = closest.Position - Position;
+        if (toClosest.magnitude < 8f) {
+            
+        }
+        moveDir = toClosest.normalized;
     }
 
     private void FixedUpdate() {

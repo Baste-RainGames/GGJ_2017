@@ -35,19 +35,13 @@ public class PlayerMovement : MonoBehaviour {
         moveDir = Vector2.MoveTowards(moveDir, Vector2.zero, Time.deltaTime * 3f);
     }
 
-    public void UpdateZPos(float zPos) {
-        transform.position = transform.position.WithZ(zPos);
-    }
-
-    public void ReturnToDefaultZPos() {
-        UpdateZPos(startingZPos);
-    }
 
     private void TurnToFaceDirection(Vector2 dir) {
         if (!gun.IsShooting) {
             FacingDirection = dir;
-            gunIndicator.transform.position = (Position + FacingDirection * .7f);
-            gunIndicator.transform.localPosition = gunIndicator.transform.localPosition.WithZ(gunIndicatorZPos);
+            var zPos = transform.position.z;
+            gunIndicator.transform.position = (Position + FacingDirection * .7f).WithZ(zPos);
+            
 
             var angle = Vector2.Angle(Vector2.down, FacingDirection);
             if (FacingDirection.x < 0) {
