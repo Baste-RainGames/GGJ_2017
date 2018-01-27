@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[SelectionBase]
 public class Enemy : MonoBehaviour {
 
     public Vector2 Position => transform.position;

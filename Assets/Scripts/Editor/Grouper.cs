@@ -9,7 +9,15 @@ public static class Grouper {
         if (objects.Length == 0)
             return;
 
+        var avgPos = Vector3.zero;
+        foreach (var o in Selection.gameObjects) {
+            avgPos += o.transform.position;
+        }
+
+        avgPos /= Selection.gameObjects.Length;
+
         var rootObject = new GameObject(objects[0].name + "_Group");
+        rootObject.transform.position = avgPos;
         Undo.RegisterCreatedObjectUndo(rootObject, "Create group");
         var rootParent = objects[0].transform.parent;
         Undo.SetTransformParent(rootObject.transform, rootParent, "Create group");
