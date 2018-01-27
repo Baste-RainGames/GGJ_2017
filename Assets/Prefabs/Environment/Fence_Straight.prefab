@@ -21,9 +21,8 @@ GameObject:
   - component: {fileID: 4696261068775412}
   - component: {fileID: 33106355105393256}
   - component: {fileID: 23445882537371060}
-  - component: {fileID: 95428360870810956}
   - component: {fileID: 61260517234639080}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Fence_Straight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,20 +108,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 1}
   m_EdgeRadius: 0
---- !u!95 &95428360870810956
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1302114659702708}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a2035b9d2da4fd944933294b734ec2eb, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

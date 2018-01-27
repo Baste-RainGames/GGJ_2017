@@ -6,6 +6,9 @@ public class Gun : MonoBehaviour {
     public Transform gunZPos;
     public float shootCooldown = .5f;
 
+    public AudioSource source;
+    public AudioClip gunSound;
+
     private PlayerMovement movement;
     public bool IsShooting { get; private set; }
     private float timeOfLastShot;
@@ -28,6 +31,7 @@ public class Gun : MonoBehaviour {
         if (shotBlocked)
             return;
         var bullet = Instantiate(bulletPrefab, spawnPos, Quaternion.identity).GetComponent<Bullet>();
+        source.PlayOneShot(gunSound);
         bullet.Fire(direction);
         timeOfLastShot = Time.time;
     }

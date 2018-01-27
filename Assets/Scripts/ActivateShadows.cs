@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ActivateShadows : MonoBehaviour {
-    
-	void Start () {
+
+    void Start () {
         GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
         GetComponent<Renderer>().receiveShadows = true;
     }
-	
 }

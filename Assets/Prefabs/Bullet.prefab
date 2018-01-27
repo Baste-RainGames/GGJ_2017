@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50436700380337980}
   - component: {fileID: 58456880504624312}
   - component: {fileID: 82523522979049896}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,8 +88,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 15e81019b98604a49961c4839460265c, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -115,6 +115,12 @@ AudioSource:
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
+      time: 0.5028094
+      value: 0.98643553
+      inSlope: -1.4638901
+      outSlope: -1.4638901
+      tangentMode: 0
+    - serializedVersion: 2
       time: 1
       value: 0
       inSlope: 0
@@ -122,13 +128,13 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -140,13 +146,13 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 0.75
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -172,6 +178,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 10
   Damage: 1
+  HitEnemy: {fileID: 8300000, guid: 1371886bd16281a4aba1c44c42fa967f, type: 3}
+  HitWall: {fileID: 8300000, guid: f083129e4cead94488579215cd1234bb, type: 3}
+  audioSource: {fileID: 82523522979049896}
 --- !u!212 &212395454654936122
 SpriteRenderer:
   m_ObjectHideFlags: 1

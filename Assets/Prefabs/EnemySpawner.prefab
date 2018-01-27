@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f613c7a5db4e209e37c5c9f57c1417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thingToSpawn: {fileID: 1746007952954052, guid: a06c3f9064283e94983757c0f3d05f80,
+  thingToSpawn: {fileID: 1261592272467662, guid: 9c49134d1d6d65a449470fa269518f64,
     type: 2}
   spawnZPos: -0.25
   numToSpawn: 3
