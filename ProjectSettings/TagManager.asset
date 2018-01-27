@@ -26,8 +26,8 @@ TagManager:
   - 
   - 
   - 
-  - WalkIndicator
-  - WalkIndicatorReceiver
+  - WalkOnTopOf
+  - WalkOnTopChecker
   - 
   - 
   - 
