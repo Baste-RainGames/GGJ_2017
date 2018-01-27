@@ -40,8 +40,7 @@ public class PlayerMovement : MonoBehaviour {
         if (!gun.IsShooting) {
             FacingDirection = dir;
             var zPos = transform.position.z;
-            gunIndicator.transform.position = (Position + FacingDirection * .7f).WithZ(zPos);
-            
+            gunIndicator.transform.position = (Position + FacingDirection * .7f).WithZ(zPos - .5f);
 
             var angle = Vector2.Angle(Vector2.down, FacingDirection);
             if (FacingDirection.x < 0) {

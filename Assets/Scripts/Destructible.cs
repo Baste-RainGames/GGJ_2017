@@ -3,15 +3,15 @@
 public class Destructible : MonoBehaviour {
 
     public int Health = 3;
+    public AudioSource deathSound;
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        var bullet = other.GetComponent<Bullet>();
-        if (bullet != null) {
-            bullet.OnDamagedObject();
-            Health -= bullet.Damage;
-
-            if(Health <= 0)
-                Destroy(gameObject);
+    public void Destroy() {
+        if (deathSound != null) {
+            deathSound.transform.parent = null;
+            deathSound.Play();
+            Destroy(deathSound.gameObject, deathSound.clip.length * 1.1f);
         }
+        Destroy(gameObject);
     }
+
 }

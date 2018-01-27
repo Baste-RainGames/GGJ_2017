@@ -7,6 +7,11 @@ public class Bullet : MonoBehaviour {
     private Rigidbody2D rb;
     public int Damage = 1;
 
+    public AudioClip HitEnemy;
+    public AudioClip HitWall;
+    public AudioSource audioSource;
+    public Vector3 Position => transform.position;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -21,9 +26,31 @@ public class Bullet : MonoBehaviour {
         rb.angularVelocity = 1500f;
     }
 
+    
+    private void OnCollisionEnter2D(Collision2D other) {
+        var damageable = other.GetComponent<Destructible>();
+        if (damageable == null)  {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Geometry")) {
+                audioSource.clip = HitWall;
+                audioSource.Play();
+            }
+        }
+        else {
+            OnDamagedObject();
+            damageable.Health -= Damage;
+
+            if (damageable.Health <= 0)
+                damageable.Destroy();
+        }
+
+        Destroy(GetComponent<Collider>());
+        Destroy(this);
+        Destroy(gameObject, .5f);
+    }
+
     public void OnDamagedObject() {
         GetComponent<SpriteRenderer>().color = Color.red;
-        Destroy(GetComponent<Collider>());
-        Destroy(gameObject, .5f);
+        audioSource.clip = HitEnemy;
+        audioSource.Play();
     }
 }
