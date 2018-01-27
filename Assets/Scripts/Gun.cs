@@ -3,6 +3,7 @@
 public class Gun : MonoBehaviour {
 
     public GameObject bulletPrefab;
+    public Transform gunZPos;
     public float shootCooldown = .5f;
 
     private PlayerMovement movement;
@@ -31,22 +32,23 @@ public class Gun : MonoBehaviour {
         timeOfLastShot = Time.time;
     }
 
-    private Vector2 FindBulletSpawnPosition(Vector2 direction, out bool shotBlocked) {
+    private Vector3 FindBulletSpawnPosition(Vector2 direction, out bool shotBlocked) {
         var raycastHit = Physics2D.Raycast(transform.position, direction, 2f, Layers.GeometryMaskWithoutBlink);
         if (raycastHit) {
             if (raycastHit.distance < .5f) {
                 Debug.Log("hit " + raycastHit.collider.name);
                 shotBlocked = true;
-                return default(Vector2);
+                return default(Vector3);
             }
 
             shotBlocked = false;
-            return raycastHit.point;
+            return new Vector3(raycastHit.point.x, raycastHit.point.y, gunZPos.position.z);
         }
 
 
         shotBlocked = false;
-        return (Vector2) transform.position + direction;
+        var pos = (Vector2) transform.position + direction;
+        return new Vector3(pos.x, pos.y, gunZPos.position.z);
     }
 
     private Vector2 FindShootDirection() {
