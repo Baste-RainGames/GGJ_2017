@@ -21,7 +21,7 @@ public class Blinker : MonoBehaviour {
         var destination = Position + blinkLength * forward;
 
         var toDest = (destination - Position);
-        var hit = Physics2D.Raycast(Position, toDest, blinkLength, 1 << LayerMask.NameToLayer("Default"));
+        var hit = Physics2D.Raycast(Position, toDest, blinkLength, Layers.GeometryMaskWithoutBlink);
         if (hit) {
             if (hit.distance < blinkOffset)
                 return;
