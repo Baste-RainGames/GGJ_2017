@@ -1476,7 +1476,7 @@ MonoBehaviour:
   gunZPos: {fileID: 4603620720205970}
   shootCooldown: 0.12
   source: {fileID: 82021988026442886}
-  gunSound: {fileID: 8300000, guid: 15e81019b98604a49961c4839460265c, type: 3}
+  gunSound: {fileID: 8300000, guid: 74e7160b462b7164b82e18f6a92bc1ad, type: 3}
 --- !u!124 &124098807267119676
 Behaviour:
   m_ObjectHideFlags: 1
