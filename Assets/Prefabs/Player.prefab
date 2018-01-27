@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 20275521060493994}
   - component: {fileID: 124098807267119676}
   - component: {fileID: 114454840879862338}
+  - component: {fileID: 114579050844907358}
   m_Layer: 8
   m_Name: Player 1 Camera 3D
   m_TagString: MainCamera
@@ -267,6 +268,7 @@ GameObject:
   - component: {fileID: 50691144899607056}
   - component: {fileID: 58423740320391232}
   - component: {fileID: 81422712711044132}
+  - component: {fileID: 114217950733465622}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -909,6 +911,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114217950733465622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860017689231668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d6a7b50f0f7c8458c11746e1841458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114226949429988488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -922,6 +935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   gunIndicator: {fileID: 4603620720205970}
+  movementVector: {x: 0, y: 0}
 --- !u!114 &114282402242108788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1131,6 +1145,17 @@ MonoBehaviour:
   gunBG: {fileID: 114079224304392430}
   seeBG: {fileID: 114974501618771164}
   blinkBG: {fileID: 114212481870645636}
+--- !u!114 &114579050844907358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405953863332776}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d6a7b50f0f7c8458c11746e1841458, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114611284518994476
 MonoBehaviour:
   m_ObjectHideFlags: 1
