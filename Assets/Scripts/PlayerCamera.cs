@@ -9,6 +9,7 @@ public class PlayerCamera : MonoBehaviour {
     Vector3 targetPos;
 	// Use this for initialization
 	void Start () {
+        orgPos = transform.localPosition;
         playerMovement = transform.parent.GetComponent<PlayerMovement>();
 	}
 	
@@ -16,6 +17,7 @@ public class PlayerCamera : MonoBehaviour {
 	void Update () {
 
         if (playerMovement.movementVector.magnitude != 0) {
+            transform.localPosition = Vector3.Lerp(transform.localPosition, orgPos + new Vector3(playerMovement.movementVector.x, playerMovement.movementVector.y, 0), Time.deltaTime);
         }
             
     }

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33000634323526802}
   - component: {fileID: 23737664194689230}
   - component: {fileID: 95558749649953036}
+  - component: {fileID: 114201535159580988}
   m_Layer: 0
   m_Name: Lamp
   m_TagString: Untagged
@@ -166,3 +167,14 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114201535159580988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1234870869289492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c220b830dd88dc348a9a4249399a24c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
