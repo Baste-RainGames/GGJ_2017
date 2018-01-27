@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D rb;
     private Gun gun;
 
-    private Vector2 movementVector;
+    public Vector2 movementVector;
     public AnimationPlayer animationPlayer;
     private FootstepSounds footsteps;
     public Vector2 FacingDirection { get; private set; } = Vector2.down;
