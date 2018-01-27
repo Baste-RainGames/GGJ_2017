@@ -22,5 +22,14 @@ public static class Extensions {
         Vector3 threeDee = vector;
         threeDee.z = newZ;
         return threeDee;
-    }    
+    }
+
+    public static Transform[] GetDirectChildren(this Transform transform) {
+        var children = new Transform[transform.childCount];
+        for (int i = 0; i < children.Length; i++) {
+            children[i] = transform.GetChild(i);
+        }
+
+        return children;
+    }
 }
