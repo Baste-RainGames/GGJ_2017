@@ -11,6 +11,8 @@ public static class Grouper {
 
         var rootObject = new GameObject(objects[0].name + "_Group");
         Undo.RegisterCreatedObjectUndo(rootObject, "Create group");
+        var rootParent = objects[0].transform.parent;
+        Undo.SetTransformParent(rootObject.transform, rootParent, "Create group");
 
         foreach (var gameObject in Selection.gameObjects) {
             Undo.SetTransformParent(gameObject.transform, rootObject.transform, "Create group");

@@ -8,15 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2911030e5534a95a4d09ea58ba00c68, type: 3}
-  m_Name: KeyBinding_Arrows
+  m_Script: {fileID: 11500000, guid: 880c4c1d7faf4279a0b80f840b710f53, type: 3}
+  m_Name: StartEquipment
   m_EditorClassIdentifier: 
-  moveUp: 273
-  moveLeft: 276
-  moveDown: 274
-  moveRight: 275
-  shoot: 256
-  blink: 257
-  stealGun: 277
-  stealEyes: 278
-  stealBlink: 280
+  startsWithGun: 0
+  startsWithEyes: 0
+  startsWithBlink: 0

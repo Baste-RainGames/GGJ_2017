@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour {
 
     private Vector2 moveDir;
     public Vector2 FacingDirection { get; private set; } = Vector2.down;
-
     public Vector2 Position => transform.position;
 
     private void Awake() {

@@ -4,6 +4,7 @@ public class PlayerInput : MonoBehaviour {
 
     public PlayerID playerId;
     public KeyBinding keyBinding;
+    public StartEquipment startEquipment;
 
     private KeyCode upKey, downKey, leftKey, rightKey;
     private KeyCode shootKey;
@@ -24,7 +25,7 @@ public class PlayerInput : MonoBehaviour {
     private bool hasGun;
     public bool HasGun {
         get { return hasGun; }
-        private set {
+        set {
             hasGun = value;
             gunRenderer.enabled = value;
         }
@@ -60,10 +61,6 @@ public class PlayerInput : MonoBehaviour {
         stealEyesKey  = keyBinding.stealEyes;
         stealBlinkKey =  keyBinding.stealBlink;
 
-        //eh
-        HasGun = hasGun;
-        HasEyes = hasEyes;
-
         if (otherPlayer == null) {
             var allPlayers = FindObjectsOfType<PlayerInput>();
             if (allPlayers.Length > 1) {
@@ -80,6 +77,10 @@ public class PlayerInput : MonoBehaviour {
             if (directionIndicator != null)
                 gunRenderer = directionIndicator.GetComponent<SpriteRenderer>();
         }
+    }
+
+    private void Start() {
+        startEquipment.Apply(this);
     }
 
     void Update() {

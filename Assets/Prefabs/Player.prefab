@@ -162,7 +162,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294967007
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -198,7 +198,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294966783
+    m_Bits: 288
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78fb5786fb2c4532beec2592891a0f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blinkLength: 5
+  blinkLength: 3
 --- !u!114 &114828981156298760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -283,6 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerId: 0
   keyBinding: {fileID: 0}
+  startEquipment: {fileID: 11400000, guid: ec5c084c330b19a47bab0fd7e6bafca2, type: 2}
   otherPlayer: {fileID: 0}
   gunRenderer: {fileID: 212025625514824032}
   hasGun: 0
