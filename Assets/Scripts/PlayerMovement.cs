@@ -9,12 +9,14 @@ public class PlayerMovement : MonoBehaviour {
 
     private Vector2 movementVector;
     public AnimationPlayer animationPlayer;
+    private FootstepSounds footsteps;
     public Vector2 FacingDirection { get; private set; } = Vector2.down;
     public Vector2 Position => transform.position;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         gun = GetComponent<Gun>();
+        footsteps = GetComponentInChildren<FootstepSounds>();
         animationPlayer = new AnimationPlayer(GetComponentInChildren<Animator>());
         animationPlayer.EnsurePlaying("Idle");
     }
@@ -28,6 +30,8 @@ public class PlayerMovement : MonoBehaviour {
 
     private void FixedUpdate() {
         rb.velocity = movementVector * speed;
+
+        footsteps.ShouldPlay = rb.velocity.magnitude > .9f * speed;
 
         movementVector = Vector2.MoveTowards(movementVector, Vector2.zero, Time.deltaTime * 3f);
         if (movementVector == Vector2.zero) {
