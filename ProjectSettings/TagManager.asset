@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 2D
+  - Player
   - 3D
   - Can_Blink_Though
   - 
@@ -26,8 +26,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - WalkIndicator
+  - WalkIndicatorReceiver
   - 
   - 
   - 

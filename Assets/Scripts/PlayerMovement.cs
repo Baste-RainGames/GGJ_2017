@@ -10,10 +10,13 @@ public class PlayerMovement : MonoBehaviour {
     private Vector2 moveDir;
     public Vector2 FacingDirection { get; private set; } = Vector2.down;
     public Vector2 Position => transform.position;
+    
+    private float gunIndicatorZPos;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         gun = GetComponent<Gun>();
+        gunIndicatorZPos = gunIndicator.localPosition.z;
     }
 
     public void MoveInDir(Vector2 direction) {
@@ -32,7 +35,8 @@ public class PlayerMovement : MonoBehaviour {
     private void TurnToFaceDirection(Vector2 dir) {
         if (!gun.IsShooting) {
             FacingDirection = dir;
-            gunIndicator.transform.position = Position + FacingDirection * .7f;
+            gunIndicator.transform.position = (Position + FacingDirection * .7f);
+            gunIndicator.transform.localPosition = gunIndicator.transform.localPosition.WithZ(gunIndicatorZPos);
 
             var angle = Vector2.Angle(Vector2.down, FacingDirection);
             if (FacingDirection.x < 0) {
