@@ -18,6 +18,7 @@ public class PlayerInput : MonoBehaviour {
     private PlayerMovement movementAgent;
     private Gun gun;
     private Blinker blinker;
+    private AbilityIndicator abilityIndicator;
 
     private Vector2 movementInput;
 
@@ -29,6 +30,7 @@ public class PlayerInput : MonoBehaviour {
             hasGun = value;
             gunRenderer.enabled = value;
             GetComponentInChildren<Animator>().SetLayerWeight(1, value ? 1 : 0);
+            abilityIndicator.Set(Ability.Gun, value);
         }
     }
 
@@ -38,19 +40,30 @@ public class PlayerInput : MonoBehaviour {
         get { return hasEyes; }
         set {
             hasEyes = value;
-            if (value)
+            abilityIndicator.Set(Ability.See, value);
+            if (value) {
                 EyesController.SetPlayerThatHasEyes(playerId);
+            }
         }
     }
 
     [SerializeField]
     private bool hasBlink;
-    public bool HasBlink { get { return hasBlink; } set { hasBlink = value; } }
+    public bool HasBlink {
+        get {
+            return hasBlink;
+        }
+        set {
+            hasBlink = value;
+            abilityIndicator.Set(Ability.Blink, value);
+        }
+    }
 
     void Awake() {
         movementAgent = GetComponent<PlayerMovement>();
         gun           = GetComponent<Gun>();
         blinker       = GetComponent<Blinker>();
+        abilityIndicator = GetComponentInChildren<AbilityIndicator>();
 
         upKey         = keyBinding.moveUp;
         downKey       = keyBinding.moveDown;
@@ -60,7 +73,7 @@ public class PlayerInput : MonoBehaviour {
         blinkKey      = keyBinding.blink;
         stealGunKey   = keyBinding.stealGun;
         stealEyesKey  = keyBinding.stealEyes;
-        stealBlinkKey =  keyBinding.stealBlink;
+        stealBlinkKey = keyBinding.stealBlink;
 
         if (otherPlayer == null) {
             var allPlayers = FindObjectsOfType<PlayerInput>();
