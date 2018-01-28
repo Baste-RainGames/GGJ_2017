@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.PostProcessing;
 
 public class Openable : MonoBehaviour {
@@ -6,14 +7,16 @@ public class Openable : MonoBehaviour {
     public Collider2D doorCollider;
 
     public void Open() {
-        var an = GetComponent<Animator>();
-        if (an != null) {
-            an.Play("Open");
-        }
-        else {
-            Destroy(gameObject);
-        }
 
+        StartCoroutine(MoveDown());
+        
+    }
+
+    IEnumerator MoveDown() {
+        while(transform.position.z < 2) {
+            transform.position -= Vector3.back * .1f;
+            yield return new WaitForSeconds(.01f);
+        }
         doorCollider.enabled = false;
     }
 
