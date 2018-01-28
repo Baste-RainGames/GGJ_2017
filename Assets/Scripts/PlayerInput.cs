@@ -22,7 +22,6 @@ public class PlayerInput : MonoBehaviour {
 
     private Vector2 movementInput;
 
-    [SerializeField]
     private bool hasGun;
     public bool HasGun {
         get { return hasGun; }
@@ -34,7 +33,6 @@ public class PlayerInput : MonoBehaviour {
         }
     }
 
-    [SerializeField]
     private bool hasEyes;
     public bool HasEyes {
         get { return hasEyes; }
@@ -47,7 +45,6 @@ public class PlayerInput : MonoBehaviour {
         }
     }
 
-    [SerializeField]
     private bool hasBlink;
     public bool HasBlink {
         get {

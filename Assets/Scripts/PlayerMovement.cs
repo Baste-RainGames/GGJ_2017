@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D rb;
     private Gun gun;
 
+    [NonSerialized]
     public Vector2 movementVector;
     public AnimationPlayer animationPlayer;
     private FootstepSounds footsteps;
