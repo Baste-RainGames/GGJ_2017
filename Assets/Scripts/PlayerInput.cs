@@ -23,13 +23,21 @@ public class PlayerInput : MonoBehaviour {
     private Vector2 movementInput;
     private LevelSetup levelSetup;
 
+    private bool levelHasGun, levelHasTeleport, levelHasEyes;
+    private bool hasRunStart;
+
     private bool hasGun;
     public bool HasGun {
         get { return hasGun; }
         set {
-            hasGun = value;
-            GetComponentInChildren<Animator>().SetLayerWeight(1, value ? 1 : 0);
-            abilityIndicator.Set(Ability.Gun, value);
+            var old = hasGun;
+            hasGun = value && levelHasGun;
+            GetComponentInChildren<Animator>().SetLayerWeight(1, hasGun ? 1 : 0);
+            abilityIndicator.Set(Ability.Gun, hasGun);
+
+            if (hasGun != old && hasRunStart) {
+                stealAbilitySound.Play();
+            }
         }
     }
 
@@ -37,22 +45,30 @@ public class PlayerInput : MonoBehaviour {
     public bool HasEyes {
         get { return hasEyes; }
         set {
-            hasEyes = value;
-            abilityIndicator.Set(Ability.See, value);
-            if (value) {
-                EyesController.SetPlayerThatHasEyes(playerId);
+            var old = hasEyes;
+            hasEyes = value && levelHasEyes;
+            abilityIndicator.Set(Ability.See, hasEyes);
+            if (hasEyes || !levelHasEyes) {
+                EyesController.SetPlayerThatHasEyes(playerId, levelHasEyes);
+            }
+
+            if (hasEyes != old && hasRunStart) {
+                stealAbilitySound.Play();
             }
         }
     }
 
-    private bool hasBlink;
-    public bool HasBlink {
-        get {
-            return hasBlink;
-        }
+    private bool hasTeleport;
+    public bool HasTeleport {
+        get { return hasTeleport; }
         set {
-            hasBlink = value;
-            abilityIndicator.Set(Ability.Blink, value);
+            var old = hasTeleport;
+            hasTeleport = value && levelHasTeleport;
+            abilityIndicator.Set(Ability.Blink, hasTeleport);
+
+            if (hasTeleport != old && hasRunStart) {
+                stealAbilitySound.Play();
+            }
         }
     }
 
@@ -61,8 +77,16 @@ public class PlayerInput : MonoBehaviour {
         gun              = GetComponent<Gun>();
         blinker          = GetComponent<Blinker>();
         abilityIndicator = GetComponentInChildren<AbilityIndicator>();
-        
+
         levelSetup = FindObjectOfType<LevelSetup>();
+        if (levelSetup) {
+            levelHasTeleport = levelSetup.teleportActive;
+            levelHasEyes     = levelSetup.sightActive;
+            levelHasGun      = levelSetup.gunActive;
+        }
+        else {
+            levelHasTeleport = levelHasEyes = levelHasGun = true;
+        }
 
         upKey         = keyBinding.moveUp;
         downKey       = keyBinding.moveDown;
@@ -87,7 +111,8 @@ public class PlayerInput : MonoBehaviour {
     }
 
     private void Start() {
-        startEquipment.Apply(this);
+        startEquipment.Apply(this, levelHasGun, levelHasEyes, levelHasTeleport);
+        hasRunStart = true;
     }
 
     void Update() {
@@ -97,24 +122,21 @@ public class PlayerInput : MonoBehaviour {
             ShootInput();
         }
         else if (Input.GetKeyDown(stealGunKey)) {
-            stealAbilitySound.Play();
             otherPlayer.HasGun = false;
             HasGun = true;
         }
 
         if (!hasEyes && Input.GetKeyDown(stealEyesKey)) {
-            stealAbilitySound.Play();
             otherPlayer.HasEyes = false;
             HasEyes = true;
         }
 
-        if (HasBlink) {
+        if (HasTeleport) {
             BlinkInput();
         }
         else if (Input.GetKeyDown(stealBlinkKey)) {
-            stealAbilitySound.Play();
-            otherPlayer.HasBlink = false;
-            HasBlink = true;
+            otherPlayer.HasTeleport = false;
+            HasTeleport = true;
         }
     }
 
