@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212484134648248000}
   - component: {fileID: 61223666286897010}
   - component: {fileID: 114589421311811502}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Level End Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,6 +79,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: Level1
+  startSurvivalMode: 0
+  numToKill: 50
+  spawners: []
+  killText: {fileID: 0}
 --- !u!212 &212484134648248000
 SpriteRenderer:
   m_ObjectHideFlags: 1

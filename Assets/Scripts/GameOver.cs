@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using NUnit.Framework.Constraints;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,9 +9,11 @@ public class GameOver : MonoBehaviour {
     private static GameOver instance;
     public TMP_Text gameOverText;
     public TMP_Text winText;
+    private string originalWinText;
 
     private void Awake() {
         instance = this;
+        originalWinText = winText.text;
     }
 
     public static void DoGameOver() {
@@ -33,6 +36,16 @@ public class GameOver : MonoBehaviour {
     }
 
     public static void ShowNextLevelScreen() {
+        instance.winText.text = instance.originalWinText;
         instance.winText.enabled = true;
+    }
+
+    public static void Show(string text) {
+        instance.winText.text = text;
+        instance.winText.enabled = true;
+    }
+
+    public static void Hide() {
+        instance.winText.enabled = false;
     }
 }
