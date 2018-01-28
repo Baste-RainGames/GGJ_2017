@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     public float speed = 5f;
-    public Transform gunIndicator;
 
     private Rigidbody2D rb;
     private Gun gun;
@@ -89,15 +88,6 @@ public class PlayerMovement : MonoBehaviour {
     private void TurnToFaceDirection(Vector2 dir) {
         if (!gun.IsShooting) {
             FacingDirection = dir;
-            var zPos = transform.position.z;
-            gunIndicator.transform.position = (Position + FacingDirection * .7f).WithZ(zPos - .5f);
-
-            var angle = Vector2.Angle(Vector2.down, FacingDirection);
-            if (FacingDirection.x < 0) {
-                angle *= -1;
-            }
-
-            gunIndicator.transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
     }
 

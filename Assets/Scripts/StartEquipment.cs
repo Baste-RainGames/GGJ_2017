@@ -10,6 +10,13 @@ public class StartEquipment : ScriptableObject {
         var id = player.playerId;
         player.HasGun   = id == startsWithGun;
         player.HasEyes  = id == startsWithEyes;
-        player.HasBlink = id == startsWithBlink;
+        player.HasTeleport = id == startsWithBlink;
+    }
+
+    public void Apply(PlayerInput player, bool levelHasGun, bool levelHasEyes, bool levelHasTeleport) {
+        var id = player.playerId;
+        player.HasGun   = id == startsWithGun && levelHasGun;
+        player.HasEyes  = id == startsWithEyes && levelHasEyes;
+        player.HasTeleport = id == startsWithBlink && levelHasTeleport;
     }
 }
