@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour {
         gun = GetComponent<Gun>();
         footsteps = GetComponentInChildren<FootstepSounds>();
         animationPlayer = new AnimationPlayer(GetComponentInChildren<Animator>());
-        animationPlayer.EnsurePlaying("Idle_Down");
+        animationPlayer.EnsurePlaying("IdleDown");
     }
 
     public void MoveInDir(Vector2 direction) {
