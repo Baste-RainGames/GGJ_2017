@@ -54,6 +54,6 @@ MonoBehaviour:
   gunActive: 1
   teleportActive: 1
   sightActive: 1
-  music: {fileID: 8300000, guid: 5255c2c1372235940929f1ed97ba8789, type: 3}
+  music: {fileID: 8300000, guid: 79d80cadf90f04546b926a2610f621b5, type: 3}
   musicMixer: {fileID: 243658812843640022, guid: c0cf96afc87e747419478e0c206749c2,
     type: 2}

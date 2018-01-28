@@ -127,7 +127,7 @@ public class PlayerInput : MonoBehaviour {
         }
 
         if (!hasEyes && Input.GetKeyDown(stealEyesKey)) {
-            otherPlayer.HasEyes = false;
+            otherPlayer.HasEyes = false; 
             HasEyes = true;
         }
 

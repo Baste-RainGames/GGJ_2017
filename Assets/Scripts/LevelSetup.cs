@@ -10,12 +10,4 @@ public class LevelSetup : MonoBehaviour {
     public AudioClip music;
     public AudioMixerGroup musicMixer;
 
-    private void Awake() {
-        var source = gameObject.AddComponent<AudioSource>();
-        source.clip = music;
-        source.loop = true;
-        source.outputAudioMixerGroup = musicMixer;
-        source.Play();
-    }
-
 }
