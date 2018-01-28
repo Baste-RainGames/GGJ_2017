@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
@@ -94,5 +95,12 @@ public class PlayerMovement : MonoBehaviour {
     public void StopVelocity() {
         rb.velocity = Vector2.zero;
         movementVector = Vector2.zero;
+    }
+
+    public IEnumerator DoDamageReaction() {
+        animationPlayer.LockInto("Damaged");
+        yield return new WaitForSeconds(.2f);
+        animationPlayer.UnLock("Damaged");
+
     }
 }
