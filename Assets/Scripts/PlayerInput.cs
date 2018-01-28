@@ -5,6 +5,7 @@ public class PlayerInput : MonoBehaviour {
     public PlayerID playerId;
     public KeyBinding keyBinding;
     public StartEquipment startEquipment;
+    public AudioSource stealAbilitySound;
 
     private KeyCode upKey, downKey, leftKey, rightKey;
     private KeyCode shootKey;
@@ -96,11 +97,13 @@ public class PlayerInput : MonoBehaviour {
             ShootInput();
         }
         else if (Input.GetKeyDown(stealGunKey)) {
+            stealAbilitySound.Play();
             otherPlayer.HasGun = false;
             HasGun = true;
         }
 
         if (!hasEyes && Input.GetKeyDown(stealEyesKey)) {
+            stealAbilitySound.Play();
             otherPlayer.HasEyes = false;
             HasEyes = true;
         }
@@ -109,6 +112,7 @@ public class PlayerInput : MonoBehaviour {
             BlinkInput();
         }
         else if (Input.GetKeyDown(stealBlinkKey)) {
+            stealAbilitySound.Play();
             otherPlayer.HasBlink = false;
             HasBlink = true;
         }
