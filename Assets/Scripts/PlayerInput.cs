@@ -21,6 +21,7 @@ public class PlayerInput : MonoBehaviour {
     private AbilityIndicator abilityIndicator;
 
     private Vector2 movementInput;
+    private LevelSetup levelSetup;
 
     private bool hasGun;
     public bool HasGun {
@@ -57,10 +58,12 @@ public class PlayerInput : MonoBehaviour {
     }
 
     void Awake() {
-        movementAgent = GetComponent<PlayerMovement>();
-        gun           = GetComponent<Gun>();
-        blinker       = GetComponent<Blinker>();
+        movementAgent    = GetComponent<PlayerMovement>();
+        gun              = GetComponent<Gun>();
+        blinker          = GetComponent<Blinker>();
         abilityIndicator = GetComponentInChildren<AbilityIndicator>();
+        
+        levelSetup = FindObjectOfType<LevelSetup>();
 
         upKey         = keyBinding.moveUp;
         downKey       = keyBinding.moveDown;
