@@ -8,6 +8,8 @@ public class LevelEndZone : MonoBehaviour {
     public string nextLevel;
     private bool isLoadingLevel;
 
+    public bool startSurvivalMode;
+
     private void OnTriggerEnter2D(Collider2D other) {
         var player = other.GetComponent<PlayerInput>();
         if (player != null) {

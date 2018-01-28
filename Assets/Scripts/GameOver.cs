@@ -7,6 +7,7 @@ public class GameOver : MonoBehaviour {
 
     private static GameOver instance;
     public TMP_Text gameOverText;
+    public TMP_Text winText;
 
     private void Awake() {
         instance = this;
@@ -32,6 +33,6 @@ public class GameOver : MonoBehaviour {
     }
 
     public static void ShowNextLevelScreen() {
-        instance.gameOverText.enabled = true;
+        instance.winText.enabled = true;
     }
 }
