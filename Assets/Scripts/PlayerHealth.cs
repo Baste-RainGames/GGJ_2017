@@ -7,10 +7,9 @@ public class PlayerHealth : MonoBehaviour {
 
     public Image[] healths;
 
-    [ContextMenu("DAM")]
     public void GetDamaged() {
         health -= 1;
-        if(health <= 1)
+        if(health <= 0)
             GameOver.DoGameOver();
 
         for (int i = 0; i < healths.Length; i++) {
