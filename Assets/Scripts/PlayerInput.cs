@@ -142,14 +142,19 @@ public class PlayerInput : MonoBehaviour {
 
     private void MovementInput() {
         movementInput = Vector2.zero;
-        if (Input.GetKey(upKey))
-            movementInput += Vector2.up;
-        if (Input.GetKey(leftKey))
-            movementInput += Vector2.left;
-        if (Input.GetKey(downKey))
-            movementInput += Vector2.down;
-        if (Input.GetKey(rightKey))
-            movementInput += Vector2.right;
+        if (keyBinding.useAxis) {
+            movementInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        }
+        else {
+            if (Input.GetKey(upKey))
+                movementInput += Vector2.up;
+            if (Input.GetKey(leftKey))
+                movementInput += Vector2.left;
+            if (Input.GetKey(downKey))
+                movementInput += Vector2.down;
+            if (Input.GetKey(rightKey))
+                movementInput += Vector2.right;
+        }
 
         if (movementInput == Vector2.zero)
             return;

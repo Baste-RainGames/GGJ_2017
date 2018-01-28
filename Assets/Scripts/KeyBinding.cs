@@ -2,6 +2,7 @@
 
 [CreateAssetMenu]
 public class KeyBinding : ScriptableObject {
+    public bool useAxis = false;
     public KeyCode moveUp     = KeyCode.W;
     public KeyCode moveLeft   = KeyCode.A;
     public KeyCode moveDown   = KeyCode.S;

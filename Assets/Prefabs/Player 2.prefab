@@ -1707,7 +1707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 1
-  keyBinding: {fileID: 11400000, guid: c525f8954eb741c4d9179a23295bc24a, type: 2}
+  keyBinding: {fileID: 11400000, guid: 8839fc8d5f4b60b41b0c5a89a0b912aa, type: 2}
   startEquipment: {fileID: 11400000, guid: ec5c084c330b19a47bab0fd7e6bafca2, type: 2}
   stealAbilitySound: {fileID: 82505789134736600}
   otherPlayer: {fileID: 0}
