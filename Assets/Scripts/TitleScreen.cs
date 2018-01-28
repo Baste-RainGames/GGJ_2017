@@ -13,30 +13,26 @@ public class TitleScreen : MonoBehaviour {
         bloom = GetComponent<PostProcessingBehaviour>().profile.bloom.settings;
         orgIntensity = 3;
 
-        Invoke("Flicker", 1);
+        Invoke(nameof(Flicker), 1);
     }
 
     void Update () {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene("Level1");
         }
-        
-        
-        
     }
 
 
     void Flicker() {
-
-        bloom.bloom.intensity = 5f;// orgIntensity * .25f;
+        bloom.bloom.intensity = 5f;
         GetComponent<PostProcessingBehaviour>().profile.bloom.settings = bloom;
-        Invoke("Restart", Random.Range(.1f, .3f));
+        Invoke(nameof(Restart), Random.Range(.1f, .3f));
     }
 
     void Restart() {
         StopAllCoroutines();
         StartCoroutine(ResetLight());
-        Invoke("Flicker", Random.Range(1f, 3f));
+        Invoke(nameof(Flicker), Random.Range(1f, 3f));
     }
 
     IEnumerator ResetLight() {

@@ -14,7 +14,6 @@ public class PlayerInput : MonoBehaviour {
     private KeyCode stealBlinkKey;
 
     public PlayerInput otherPlayer;
-    public SpriteRenderer gunRenderer;
     private PlayerMovement movementAgent;
     private Gun gun;
     private Blinker blinker;
@@ -28,7 +27,6 @@ public class PlayerInput : MonoBehaviour {
         get { return hasGun; }
         set {
             hasGun = value;
-            gunRenderer.enabled = value;
             GetComponentInChildren<Animator>().SetLayerWeight(1, value ? 1 : 0);
             abilityIndicator.Set(Ability.Gun, value);
         }
@@ -84,12 +82,6 @@ public class PlayerInput : MonoBehaviour {
 
         if (otherPlayer != null && otherPlayer.playerId == playerId) {
             Debug.LogError("SAME PLAYER ID ON PLAYERS OMG");
-        }
-
-        if (gunRenderer == null) {
-            var directionIndicator = transform.Find("DirectionIndicator");
-            if (directionIndicator != null)
-                gunRenderer = directionIndicator.GetComponent<SpriteRenderer>();
         }
     }
 
