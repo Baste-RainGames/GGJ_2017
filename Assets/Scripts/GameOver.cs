@@ -30,4 +30,8 @@ public class GameOver : MonoBehaviour {
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public static void ShowNextLevelScreen() {
+        instance.gameOverText.enabled = true;
+    }
 }

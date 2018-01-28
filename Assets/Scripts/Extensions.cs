@@ -13,6 +13,10 @@ public static class Extensions {
         return col.gameObject.HasComponent<T>();
     }
 
+    public static bool HasComponent<T>(this Component comp) {
+        return comp.gameObject.HasComponent<T>();
+    }
+
     public static Vector3 WithZ(this Vector3 vector, float newZ) {
         vector.z = newZ;
         return vector;

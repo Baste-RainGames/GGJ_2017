@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProxyLevel.unity
     guid: b2c6e8142dd3ddf4e9598039fb8ddd70
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: bca3d246924415b459bbc60c1732160e
