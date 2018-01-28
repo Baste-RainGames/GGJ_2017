@@ -40,7 +40,6 @@ public class Gun : MonoBehaviour {
         var raycastHit = Physics2D.Raycast(transform.position, direction, 2f, Layers.GeometryMaskWithoutBlink);
         if (raycastHit) {
             if (raycastHit.distance < .5f) {
-                Debug.Log("hit " + raycastHit.collider.name);
                 shotBlocked = true;
                 return default(Vector3);
             }

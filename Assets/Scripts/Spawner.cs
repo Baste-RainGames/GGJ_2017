@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour {
 
     private List<GameObject> spawnedThings = new List<GameObject>();
     private Transform[] spawnPositions;
+    public bool registerKills;
 
     void Start() {
         StartCoroutine(Spawn());
@@ -36,7 +37,12 @@ public class Spawner : MonoBehaviour {
             if (spawnedThings.Count < numToSpawn) {
                 var spawnPos = spawnPositions[Random.Range(0, spawnPositions.Length)].position;
                 spawnPos += new Vector3(Random.Range(-.5f, .5f), Random.Range(-.5f, .5f), 0f);
-                spawnedThings.Add(Instantiate(thingToSpawn, spawnPos.WithZ(spawnZPos), Quaternion.identity)); 
+                var instantiated = Instantiate(thingToSpawn, spawnPos.WithZ(spawnZPos), Quaternion.identity);
+                var destructible = instantiated.GetComponentInChildren<Destructible>();
+                if (destructible != null) {
+                    destructible.registerKilled = registerKills;
+                }
+                spawnedThings.Add(instantiated); 
             }
 
             yield return new WaitForSeconds(timeBetweenSpawns); 
