@@ -9,8 +9,12 @@ public class Bullet : MonoBehaviour {
 
     public AudioClip HitEnemy;
     public AudioClip HitWall;
-    public AudioSource audioSource;
     public Vector3 Position => transform.position;
+
+    public AudioSource audioSource;
+    public Animator animator;
+
+    public GameObject hitBulletEffect;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -30,24 +34,21 @@ public class Bullet : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D other) {
         var damageable = other.GetComponent<IDamageable>();
         if (damageable == null)  {
-            if (other.gameObject.layer == LayerMask.NameToLayer("Geometry")) {
+            if (other.gameObject.layer == LayerMask.NameToLayer("Geometry") || other.gameObject.layer == LayerMask.NameToLayer("Default")) {
                 audioSource.clip = HitWall;
-                audioSource.Play();
             }
         }
         else {
-            OnDamagedObject();
+            audioSource.clip = HitEnemy;
             damageable.Damaged(Damage);
         }
 
-        Destroy(GetComponent<Collider>());
-        Destroy(this);
-        Destroy(gameObject, .5f);
+        hitBulletEffect.transform.parent = null;
+        //audio source and animator on hitbulleteffect
+        audioSource.Play();
+        animator.enabled = true;
+        Destroy(gameObject);
+        Destroy(hitBulletEffect, .5f);
     }
 
-    public void OnDamagedObject() {
-        GetComponent<SpriteRenderer>().color = Color.red;
-        audioSource.clip = HitEnemy;
-        audioSource.Play();
-    }
 }
