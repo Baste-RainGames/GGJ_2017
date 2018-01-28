@@ -15,14 +15,14 @@ public class TechnoCrab : MonoBehaviour {
     public AudioSource stepSound;
 
     private Vector2 moveDir;
-    private TechoExplosion explosionScript;
+    private TechnoExplosion explosionScript;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         var animator = GetComponentInChildren<Animator>();
         animationPlayer = new AnimationPlayer(animator);
         stepSound = GetComponentInChildren<AudioSource>();
-        explosionScript = GetComponent<TechoExplosion>();
+        explosionScript = GetComponent<TechnoExplosion>();
     }
 
     void Start() {

@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour {
         gun = GetComponent<Gun>();
         footsteps = GetComponentInChildren<FootstepSounds>();
         animationPlayer = new AnimationPlayer(GetComponentInChildren<Animator>());
-        animationPlayer.EnsurePlaying("Idle");
+        animationPlayer.EnsurePlaying("Idle_Down");
     }
 
     public void MoveInDir(Vector2 direction) {
@@ -35,16 +35,27 @@ public class PlayerMovement : MonoBehaviour {
 
         movementVector = Vector2.MoveTowards(movementVector, Vector2.zero, Time.deltaTime * 3f);
         if (movementVector == Vector2.zero) {
-            animationPlayer.EnsurePlaying("Idle");
+            if (FacingDirection.y < 0) {
+                animationPlayer.EnsurePlaying("IdleDown");
+            }
+            else if (FacingDirection.y > 0) {
+                animationPlayer.EnsurePlaying("IdleUp");
+            }
+            else if (FacingDirection.x > 0) {
+                animationPlayer.EnsurePlaying("IdleRight");
+            }
+            else {
+                animationPlayer.EnsurePlaying("IdleLeft");
+            }
         }
         else {
-            if (movementVector.y < 0) {
+            if (FacingDirection.y < 0) {
                 animationPlayer.EnsurePlaying("WalkDown");
             }
-            else if (movementVector.y > 0) {
+            else if (FacingDirection.y > 0) {
                 animationPlayer.EnsurePlaying("WalkUp");
             }
-            else if (movementVector.x > 0) {
+            else if (FacingDirection.x > 0) {
                 animationPlayer.EnsurePlaying("WalkRight");
             }
             else {

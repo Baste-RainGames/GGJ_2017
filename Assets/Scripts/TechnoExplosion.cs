@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
-public class TechoExplosion : MonoBehaviour {
-    [SerializeField]
-    private GameObject explosionTemplate;
+public class TechnoExplosion : MonoBehaviour {
+    public GameObject explosionTemplate;
+    public AudioSource chargeSound;
+    public AudioSource explodeSound;
 
     IEnumerator Start() {
         var rb = GetComponent<Rigidbody2D>();
@@ -12,10 +14,12 @@ public class TechoExplosion : MonoBehaviour {
 
         var animPlayer = new AnimationPlayer(GetComponentInChildren<Animator>());
         animPlayer.Play("ReadyExplosion");
+        chargeSound.Play();
 
         yield return new WaitForSeconds(1f);
 
         animPlayer.Play("Explode");
+        explodeSound.Play();
 
         explosionTemplate.SetActive(true);
         var radius = explosionTemplate.transform.localScale.x / 4f;
@@ -33,5 +37,4 @@ public class TechoExplosion : MonoBehaviour {
 
         Destroy(gameObject);
     }
-
 }
