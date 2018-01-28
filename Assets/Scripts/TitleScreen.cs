@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.PostProcessing;
@@ -15,13 +14,6 @@ public class TitleScreen : MonoBehaviour {
 
         Invoke(nameof(Flicker), 1);
     }
-
-    void Update () {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            SceneManager.LoadScene("Level1");
-        }
-    }
-
 
     void Flicker() {
         bloom.bloom.intensity = 5f;

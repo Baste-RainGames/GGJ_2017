@@ -8,11 +8,14 @@ public class MainSoundHandler : MonoBehaviour {
     private static MainSoundHandler instance;
     public AudioClip movieSceneClip;
     public AudioMixerGroup musicMixer;
+    public AudioMixerGroup sfxMixer;
 
     private AudioSource playingSource;
     private AudioSource otherSource;
+    private AudioSource oneOff;
 
     public void Start() {
+        instance = this;
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += SceneLoaded;
 
@@ -22,9 +25,12 @@ public class MainSoundHandler : MonoBehaviour {
         playingSource.outputAudioMixerGroup = musicMixer;
 
         otherSource = gameObject.AddComponent<AudioSource>();
-        otherSource.clip = movieSceneClip;
         otherSource.loop = true;
         otherSource.outputAudioMixerGroup = musicMixer;
+
+        oneOff = gameObject.AddComponent<AudioSource>();
+        oneOff.loop = false;
+        oneOff.outputAudioMixerGroup = sfxMixer;
 
         playingSource.Play();
     }
@@ -38,7 +44,6 @@ public class MainSoundHandler : MonoBehaviour {
     }
 
     private IEnumerator CrossFadeTo(AudioClip levelSetupMusic) {
-        Debug.Log("crossfades!");
         otherSource.clip = levelSetupMusic;
         otherSource.volume = 0f;
         otherSource.Play();
@@ -59,7 +64,9 @@ public class MainSoundHandler : MonoBehaviour {
         var temp = playingSource;
         playingSource = otherSource;
         otherSource = temp;
-        Debug.Log("finished crossfading!");
     }
 
+    public static void PlayClip(AudioClip clip) {
+        instance.oneOff.PlayOneShot(clip);
+    }
 }

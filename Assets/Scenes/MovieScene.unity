@@ -463,6 +463,7 @@ MonoBehaviour:
   movieSceneClip: {fileID: 8300000, guid: 529ec57dda82e1148a419847707ccbc3, type: 3}
   musicMixer: {fileID: 243294328993948398, guid: c0cf96afc87e747419478e0c206749c2,
     type: 2}
+  sfxMixer: {fileID: 243837848143788002, guid: c0cf96afc87e747419478e0c206749c2, type: 2}
 --- !u!1 &2024158802
 GameObject:
   m_ObjectHideFlags: 0
