@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
     public float speed = 5f;
@@ -28,42 +29,61 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+    public enum Direction {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
     private void FixedUpdate() {
         rb.velocity = movementVector * speed;
 
         footsteps.ShouldPlay = rb.velocity.magnitude > .9f * speed;
 
         movementVector = Vector2.MoveTowards(movementVector, Vector2.zero, Time.deltaTime * 3f);
-        if (movementVector == Vector2.zero) {
-            if (FacingDirection.y < 0) {
-                animationPlayer.EnsurePlaying("IdleDown");
-            }
-            else if (FacingDirection.y > 0) {
-                animationPlayer.EnsurePlaying("IdleUp");
-            }
-            else if (FacingDirection.x > 0) {
-                animationPlayer.EnsurePlaying("IdleRight");
-            }
-            else {
-                animationPlayer.EnsurePlaying("IdleLeft");
-            }
-        }
-        else {
-            if (FacingDirection.y < 0) {
-                animationPlayer.EnsurePlaying("WalkDown");
-            }
-            else if (FacingDirection.y > 0) {
-                animationPlayer.EnsurePlaying("WalkUp");
-            }
-            else if (FacingDirection.x > 0) {
-                animationPlayer.EnsurePlaying("WalkRight");
-            }
-            else {
-                animationPlayer.EnsurePlaying("WalkLeft");
-            }
+
+        SetAnimation();
+    }
+
+    private void SetAnimation() {
+        var dir = GetFacingDir();
+        var prefix = movementVector == Vector2.zero ? "Idle" : "Walk";
+        switch (dir) {
+            case Direction.Up:
+                animationPlayer.EnsurePlaying(prefix + "Up");
+                break;
+            case Direction.Down:
+                animationPlayer.EnsurePlaying(prefix + "Down");
+                break;
+            case Direction.Left:
+                animationPlayer.EnsurePlaying(prefix + "Left");
+                break;
+            case Direction.Right:
+                animationPlayer.EnsurePlaying(prefix + "Right");
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
+    public Direction GetFacingDir() {
+        Direction dir;
+        if (FacingDirection.y < 0) {
+            dir = Direction.Down;
+        }
+        else if (FacingDirection.y > 0) {
+            dir = Direction.Up;
+        }
+        else if (FacingDirection.x > 0) {
+            dir = Direction.Right;
+        }
+        else {
+            dir = Direction.Left;
+        }
+
+        return dir;
+    }
 
     private void TurnToFaceDirection(Vector2 dir) {
         if (!gun.IsShooting) {
@@ -75,7 +95,7 @@ public class PlayerMovement : MonoBehaviour {
             if (FacingDirection.x < 0) {
                 angle *= -1;
             }
-            
+
             gunIndicator.transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
     }

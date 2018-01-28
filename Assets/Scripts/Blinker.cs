@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -28,6 +29,7 @@ public class Blinker : MonoBehaviour {
             return;
 
         var forward = movement.FacingDirection;
+        var dir = movement.GetFacingDir(); //well this is the same information in two diffent ways!
         var destination = Position + blinkLength * forward;
         audioSource.Play();
 
@@ -39,12 +41,12 @@ public class Blinker : MonoBehaviour {
             destination = Position + (hit.distance - blinkOffset) * forward;
         }
 
-        StartCoroutine(DoBlink(destination));
+        StartCoroutine(DoBlink(destination, dir));
     }
 
-    private IEnumerator DoBlink(Vector2 destination) {
+    private IEnumerator DoBlink(Vector2 destination, PlayerMovement.Direction dir) {
         blinking = true;
-        movement.animationPlayer.Play("TeleportRight");
+        SetBlinkAnim(dir);
         movement.StopVelocity();
         movement.enabled = false;
         yield return new WaitForSeconds(.2f);
@@ -53,5 +55,24 @@ public class Blinker : MonoBehaviour {
         movement.enabled = true;
         blinking = false;
         canBlinkTime = Time.time + blinkCooldown;
+    }
+
+    private void SetBlinkAnim(PlayerMovement.Direction dir) {
+        switch (dir) {
+            case PlayerMovement.Direction.Up:
+                movement.animationPlayer.Play("TeleportUp");
+                break;
+            case PlayerMovement.Direction.Down:
+                movement.animationPlayer.Play("TeleportDown");
+                break;
+            case PlayerMovement.Direction.Left:
+                movement.animationPlayer.Play("TeleportLeft");
+                break;
+            case PlayerMovement.Direction.Right:
+                movement.animationPlayer.Play("TeleportRight");
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(dir), dir, null);
+        }
     }
 }
